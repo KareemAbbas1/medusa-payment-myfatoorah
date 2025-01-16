@@ -1,6 +1,6 @@
 {
   "name": "medusa-payment-myfatoorah",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "MyFatoorah payment provider for Medusa",
   "author": "Kareem Abbas",
   "repository": {
