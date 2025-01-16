@@ -54,23 +54,23 @@ class MyFatoorahPayment extends AbstractPaymentProcessor {
                     DisplayCurrencyIso: context.currency_code.toUpperCase(),
                 }),
             });
-            // console.log("Payload", {
-            //     CustomerName: customerName,
-            //     NotificationOption: "LNK",
-            //     InvoiceValue: (context.amount / 100).toFixed(2), // Ensure two decimal places
-            //     CustomerEmail: context.email || "unknown@example.com",
-            //     MobileCountryCode: "+966",
-            //     CustomerMobile: context.customer.phone
-            //         ? context.customer.phone.replace(/^\+966/, "")
-            //         : "0000000000", // Remove country code if present
-            //     CallBackUrl: `${this.storeUrl}/payment-success`,
-            //     ErrorUrl: `${this.storeUrl}/payment-failed`,
-            //     Language: "en",
-            //     DisplayCurrencyIso: context.currency_code.toUpperCase(),
-            // })
+            console.log("Payload", {
+                CustomerName: customerName,
+                NotificationOption: "LNK",
+                InvoiceValue: (context.amount / 100).toFixed(2), // Ensure two decimal places
+                CustomerEmail: context.email || "unknown@example.com",
+                MobileCountryCode: "+966",
+                CustomerMobile: context.customer.phone
+                    ? context.customer.phone.replace(/^\+966/, "")
+                    : "0000000000", // Remove country code if present
+                CallBackUrl: `${this.storeUrl}/payment-success`,
+                ErrorUrl: `${this.storeUrl}/payment-failed`,
+                Language: "en",
+                DisplayCurrencyIso: context.currency_code.toUpperCase(),
+            })
 
             if (!response.ok) {
-                console.error("API Error Response:", response);
+                // console.error("API Error Response:", response);
                 const errorData = await response.json();
                 console.error("API Error Response:", errorData);
                 throw new Error(`Failed to initiate payment: ${response.statusText}`);
