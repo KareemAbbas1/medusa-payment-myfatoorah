@@ -70,6 +70,7 @@ class MyFatoorahPayment extends AbstractPaymentProcessor {
             // })
 
             if (!response.ok) {
+                console.error("API Error Response:", response);
                 const errorData = await response.json();
                 console.error("API Error Response:", errorData);
                 throw new Error(`Failed to initiate payment: ${response.statusText}`);
