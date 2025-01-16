@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "MyFatoorah payment provider for Medusa",
   "author": "Kareem Abbas",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KareemAbbas1/medusa-payment-myfatoorah"
+  },
   "license": "MIT",
   "keywords": [
     "sqlite",
