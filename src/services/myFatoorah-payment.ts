@@ -11,11 +11,13 @@ class MyFatoorahPayment extends AbstractPaymentProcessor {
 
     private apiUrl: string;
     private apiToken: string;
+    private storeUrl: string;
 
     constructor(container, options) {
         super(container);
         this.apiUrl = options.api_url; // Base URL (test/live)
         this.apiToken = options.api_token; // API Token
+        this.storeUrl = options.store_url; // Store URL
     }
 
     async initiatePayment(
@@ -46,8 +48,8 @@ class MyFatoorahPayment extends AbstractPaymentProcessor {
                     CustomerMobile: context.customer.phone
                         ? context.customer.phone.replace(/^\+966/, "")
                         : "0000000000", // Remove country code if present
-                    CallBackUrl: "http://localhost:3000/payment-success",
-                    ErrorUrl: "http://localhost:3000/payment-failed",
+                    CallBackUrl: `${this.storeUrl}/payment-success`,
+                    ErrorUrl: `${this.storeUrl}/payment-failed`,
                     Language: "en",
                     DisplayCurrencyIso: context.currency_code.toUpperCase(),
                 }),
@@ -61,8 +63,8 @@ class MyFatoorahPayment extends AbstractPaymentProcessor {
             //     CustomerMobile: context.customer.phone
             //         ? context.customer.phone.replace(/^\+966/, "")
             //         : "0000000000", // Remove country code if present
-            //     CallBackUrl: "http://localhost:3000/payment-success",
-            //     ErrorUrl: "http://localhost:3000/payment-failed",
+            //     CallBackUrl: `${this.storeUrl}/payment-success`,
+            //     ErrorUrl: `${this.storeUrl}/payment-failed`,
             //     Language: "en",
             //     DisplayCurrencyIso: context.currency_code.toUpperCase(),
             // })
